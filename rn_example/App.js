@@ -8,6 +8,7 @@ export default function App() {
   const [showClassComponent, setShowClassComponent] = useState(true)
   return (
     <View style={styles.container}>
+      <Text className="text-red-700">1113311d31</Text>
       <Button title="Button"
               onPress={() => setShowClassComponent(prevState => !prevState)
 

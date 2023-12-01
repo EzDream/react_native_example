@@ -18,7 +18,7 @@ export class MyClassComponent extends Component {
     return (
       <View style={globalStyles.container}>
         <Text>{this.props.text} : {this.state.counter}</Text>
-        <Button title="Counter in Class"
+        <Button title="Counter"
                 onPress={() => {
                   this.setState(
                     {counter: this.state.counter + 1})
