@@ -9,10 +9,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text className="text-red-700">1113311d31</Text>
-      <Button title="Button"
-              onPress={() => setShowClassComponent(prevState => !prevState)
-
-              }/>
+      <Button color="red" title="Button"
+              onPress={() => {
+                setShowClassComponent(prevState => !prevState)
+              }}/>
       <MyFunctionComponent text={'MyFunctionComponent'}/>
       {showClassComponent && <MyClassComponent text={'MyClassComponent'}/>}
 
