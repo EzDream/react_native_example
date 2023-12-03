@@ -20,7 +20,7 @@ import { featured } from '../../constant'
 export default function HomeScreen() {
   return (<SafeAreaView>
     <View className="py-2 pb-5 space-y-2 px-2 bg-gray-50">
-      {/*<StatusBar style="auto"></StatusBar>*/}
+      <StatusBar style="dark"></StatusBar>
       <View className="flex-row space-x-2 items-center py-2">
         <View
           className="flex-row flex-1 border border-gray-100 rounded-full pt-2 pb-2 pl-2 pr-2 items-center">
