@@ -18,8 +18,8 @@ import FeatureRow from '../../components/food_app/FeatureRow'
 import { featured } from '../../constant'
 
 export default function HomeScreen() {
-  return (<SafeAreaView className="bg-white">
-    <View className="py-2 pb-5 px-2 space-y-2">
+  return (<SafeAreaView>
+    <View className="py-2 pb-5 space-y-2 px-2 bg-gray-50">
       <StatusBar style="style={}"></StatusBar>
       <View className="flex-row space-x-2 items-center py-2">
         <View
@@ -42,7 +42,7 @@ export default function HomeScreen() {
         {/* Categories*/}
         <Categories/>
         {/* featured*/}
-        <View>
+        <View className="">
           {
             [featured, featured, featured, featured].map((item, index) => {
               return (

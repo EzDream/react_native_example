@@ -25,7 +25,8 @@ export default function FeatureRow({title, description, restaurants}) {
             All</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView horizontal className="bg-transparent">
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                  className="bg-transparent">
         {
           restaurants.map((restuarant, index) => {
             return (
