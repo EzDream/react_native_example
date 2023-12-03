@@ -14,6 +14,7 @@ import { ArrowLeft, MapPin } from 'react-native-feather'
 import { themeColors } from '../../theme'
 import { StatusBar } from 'expo-status-bar'
 import DishRow from '../../components/food_app/DishRow'
+import Cart from '../../components/food_app/Cart'
 
 export default function RestaurantScreen({navigation}) {
   useLayoutEffect(() => {
@@ -25,8 +26,9 @@ export default function RestaurantScreen({navigation}) {
   const {params} = useRoute()
   console.log(params)
   return (
-    <View>
+    <View className="flex-1">
       <StatusBar style="dark"></StatusBar>
+      <Cart/>
       <ScrollView>
         <View className="relative">
           <Image source={params.image} className="w-full h-72"/>
