@@ -2,12 +2,19 @@
  * Created by zuoxiansheng on 3/12/23
  */
 import { React } from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 
 export default function Restaurant({restaurant}) {
   return (
-    <TouchableOpacity>
-      <View className="mb-8 bg-amber-500 rounded-3xl shadow-lg">
+    <TouchableWithoutFeedback>
+      <View className="mb-5 bg-amber-500 rounded-3xl mr-6">
         <Image source={restaurant.image} className="w-64 h-36 rounded-t-3xl"/>
         <Text>{restaurant.name}</Text>
         <View className="flex-row items-center mb-2 mt-1 space-x-1">
@@ -21,7 +28,7 @@ export default function Restaurant({restaurant}) {
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   )
 }
 
