@@ -10,12 +10,17 @@ import RestaurantScreen from './screens/FoodApp/RestaurantScreen'
 
 const Stack = createNativeStackNavigator()
 
+export const Routes = {
+  Home: 'Home',
+  Restaurant: 'Restaurant',
+}
+
 export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: true}}>
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Restaurant" component={RestaurantScreen}/>
+        <Stack.Screen name={Routes.Home} component={HomeScreen}/>
+        <Stack.Screen name={Routes.Restaurant} component={RestaurantScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

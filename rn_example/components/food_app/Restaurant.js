@@ -12,10 +12,18 @@ import {
 } from 'react-native'
 import { MapPin } from 'react-native-feather'
 import { themeColors } from '../../theme'
+import { Routes } from '../../navigation'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Restaurant({restaurant}) {
+  const navigation = useNavigation()
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        navigation.navigate(Routes.Restaurant, {...restaurant})
+      }
+      }
+    >
       <View style={{
         shadowColor: themeColors.bgColor(0.2),
         shadowRadius: 7,
