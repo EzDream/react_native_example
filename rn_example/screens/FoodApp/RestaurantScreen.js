@@ -1,7 +1,7 @@
 /**
  * Created by zuoxiansheng on 2/12/23
  */
-import { React, useLayoutEffect } from 'react'
+import { React, useEffect, useLayoutEffect } from 'react'
 import {
   Image, SafeAreaView,
   ScrollView,
@@ -15,6 +15,8 @@ import { themeColors } from '../../theme'
 import { StatusBar } from 'expo-status-bar'
 import DishRow from '../../components/food_app/DishRow'
 import Cart from '../../components/food_app/Cart'
+import { useDispatch } from 'react-redux'
+import { setRestaurant } from '../../slices/restaurantSlice'
 
 export default function RestaurantScreen({navigation}) {
   useLayoutEffect(() => {
@@ -23,8 +25,16 @@ export default function RestaurantScreen({navigation}) {
     })
   }, [navigation])
 
+//  const dispatch = useDispatch()
   const {params} = useRoute()
-  console.log(params)
+  const item = params
+//  useEffect(() => {
+//    console.log(`useEffect item`)
+//    if (item && item.id) {
+////      dispatch(setRestaurant({...params}))
+//    }
+//  }, [])
+
   return (
     <View className="flex-1">
       <StatusBar style="dark"></StatusBar>

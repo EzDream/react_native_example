@@ -75,7 +75,10 @@ export default function DeliveryScreen() {
                      stroke={themeColors.bgColor(1)}
                      fill={themeColors.bgColor(1)}/>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-white p-2 rounded-full">
+            <TouchableOpacity className="bg-white p-2 rounded-full"
+                              onPress={() => {
+                                navigation.goBack()
+                              }}>
               <X width={20} height={20}
                  strokeWidth={5}
                  stroke={'red'}

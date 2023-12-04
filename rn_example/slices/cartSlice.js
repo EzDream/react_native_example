@@ -8,7 +8,7 @@ const initialState = {
   items: null,
 }
 
-export const restaurantSlice = createSlice({
+export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
@@ -26,12 +26,19 @@ export const restaurantSlice = createSlice({
       } else {
         console.log(`cannot find ${action.payload} when removing it`)
       }
+      state.items = newCart
     },
   },
 })
 
-export const {setRestaurant} = restaurantSlice.actions
+export const {clearCart, addToCart, removeFromCart} = cartSlice.actions
 
-export const selectRestaurant = state => state.restaurant.restaurant
+export const selectCartItems = state => state.cart.items
 
-export default restaurantSlice.reducer
+export const selectCartItemsById = (state, id) => state.cart.items.filter(
+  item => item.id === id)
+
+export const selectCartTotal = state => state.cart.items.reduce(
+  (total, item) => total + item.price, 0)
+
+export default cartSlice.reducer
