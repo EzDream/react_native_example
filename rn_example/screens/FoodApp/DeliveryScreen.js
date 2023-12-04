@@ -23,7 +23,6 @@ export default function DeliveryScreen() {
   let restaurant = featured.restaurants[0]
   return (
     <View className="flex-1">
-      <Text>DeliveryScreen</Text>
       <MapView
         initialRegion={{
           latitude: restaurant.lat,

@@ -8,9 +8,13 @@ import HomeScreen from './screens/FoodApp/HomeScreen'
 import RestaurantScreen from './screens/FoodApp/RestaurantScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import * as React from 'react'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 export default function App() {
   return (
-    <Navigation/>
+    <Provider store={store}>
+      <Navigation/>
+    </Provider>
   )
 }
