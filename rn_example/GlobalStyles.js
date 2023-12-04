@@ -20,7 +20,7 @@ export const globalStyles = StyleSheet.create({
         shadowRadius: 10,
       },
       android: {
-        elevation: 10,
+        elevation: 5,
       },
     }),
   },

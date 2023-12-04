@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native'
 import { featured } from '../../constant'
-import { ArrowLeft } from 'react-native-feather'
+import { ArrowLeft, Minus } from 'react-native-feather'
 import { themeColors } from '../../theme'
 import { globalStyles } from '../../GlobalStyles'
 
@@ -48,20 +48,60 @@ export default function CartScreen({navigation}) {
                 style={{color: themeColors.bgColor(1)}}>Change</Text>
         </TouchableOpacity>
       </View>
+      {/*Order List*/}
       <ScrollView>
         {
           restaurant.dishes.map((dish, index) => {
             return (
-              <View className="flex-row m-2 bg-white p-3 rounded-xl"
-                    style={globalStyles.shadow}>
-                <Image source={dish.image} className="w-20 h-20 rounded-full"/>
-                <Text>{dish.name}</Text>
+              <View
+                className="flex-row m-2 bg-white p-3 rounded-xl items-center"
+                style={globalStyles.shadow}>
+                <Text className="font-bold mr-2"
+                      style={{color: themeColors.text}}>2 x</Text>
+                <Image source={dish.image}
+                       className="w-14 h-14 rounded-full"/>
+                <View className="flex-row flex-1 items-center">
+                  <Text
+                    className="flex-1 ml-1 font-bold text-l">{dish.name}</Text>
+                  <Text className="font-bold mr-2">$10</Text>
+                  <TouchableOpacity className="rounded-full p-0.5"
+                                    style={{
+                                      backgroundColor: themeColors.bgColor(1),
+                                    }}>
+                    <Minus width={20} height={20} stroke="white"
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
             )
           })
         }
       </ScrollView>
+      {/*  Checkout*/}
+      <View
+        className="absolute bottom-0 left-0 right-0 p-6 rounded-t-3xl space-y-3"
+        style={{backgroundColor: themeColors.bgColor(0.2)}}>
+        <View className="flex-row justify-between">
+          <Text className="text-gray-700">Subtotal</Text>
+          <Text className="text-gray-700">$20</Text>
+        </View>
+        <View className="flex-row justify-between">
+          <Text className="text-gray-700">Subtotal</Text>
+          <Text className="text-gray-700">$20</Text>
+        </View>
+        <View className="flex-row justify-between">
+          <Text className="text-gray-700 font-bold">Subtotal</Text>
+          <Text className="text-gray-700 font-bold">$20</Text>
+        </View>
+        <TouchableOpacity className="py-3 rounded-full"
+                          style={{backgroundColor: themeColors.bgColor(1)}}>
+          <Text
+            className="text-center text-white text-lg font-extrabold">Place
+            Order</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
+
   )
 }
 
