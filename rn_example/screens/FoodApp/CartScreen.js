@@ -14,11 +14,12 @@ import { featured } from '../../constant'
 import { ArrowLeft, Minus } from 'react-native-feather'
 import { themeColors } from '../../theme'
 import { globalStyles } from '../../GlobalStyles'
+import { Routes } from '../../navigation'
 
 export default function CartScreen({navigation}) {
   const restaurant = featured.restaurants[0]
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="bg-white flex-1 py-4">
       {/*header*/}
       <View className="relative mt-4">
         <TouchableOpacity
@@ -54,6 +55,7 @@ export default function CartScreen({navigation}) {
           restaurant.dishes.map((dish, index) => {
             return (
               <View
+                key={index}
                 className="flex-row m-2 bg-white p-3 rounded-xl items-center"
                 style={globalStyles.shadow}>
                 <Text className="font-bold mr-2"
@@ -79,7 +81,7 @@ export default function CartScreen({navigation}) {
       </ScrollView>
       {/*  Checkout*/}
       <View
-        className="absolute bottom-0 left-0 right-0 p-6 rounded-t-3xl space-y-3"
+        className="absolute bottom-0 left-0 right-0 p-6 pb-10 rounded-t-3xl space-y-3"
         style={{backgroundColor: themeColors.bgColor(0.2)}}>
         <View className="flex-row justify-between">
           <Text className="text-gray-700">Subtotal</Text>
@@ -94,6 +96,9 @@ export default function CartScreen({navigation}) {
           <Text className="text-gray-700 font-bold">$20</Text>
         </View>
         <TouchableOpacity className="py-3 rounded-full"
+                          onPress={() => {
+                            navigation.navigate(Routes.OrderReadyScreen)
+                          }}
                           style={{backgroundColor: themeColors.bgColor(1)}}>
           <Text
             className="text-center text-white text-lg font-extrabold">Place
