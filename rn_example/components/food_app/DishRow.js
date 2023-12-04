@@ -22,16 +22,16 @@ export default function DishRow({item}) {
           <View className="flex-row items-center space-x-2">
             <TouchableOpacity className="rounded-full p-0.5"
                               style={{backgroundColor: themeColors.bgColor(1)}}>
-              <Plus width={20} height={20} stroke="white"
-              />
-            </TouchableOpacity>
-            <Text>{2}</Text>
-
-            <TouchableOpacity className="rounded-full p-0.5"
-                              style={{backgroundColor: themeColors.bgColor(1)}}>
               <Minus width={20} height={20} stroke="white"
               />
             </TouchableOpacity>
+            <Text>{2}</Text>
+            <TouchableOpacity className="rounded-full p-0.5"
+                              style={{backgroundColor: themeColors.bgColor(1)}}>
+              <Plus width={20} height={20} stroke="white"
+              />
+            </TouchableOpacity>
+
           </View>
         </View>
       </View>

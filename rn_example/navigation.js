@@ -7,20 +7,25 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from './screens/FoodApp/HomeScreen'
 import RestaurantScreen from './screens/FoodApp/RestaurantScreen'
+import CartScreen from './screens/FoodApp/CartScreen'
 
 const Stack = createNativeStackNavigator()
 
 export const Routes = {
   Home: 'Home',
   Restaurant: 'Restaurant',
+  CartScreen: 'CartScreen',
 }
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: true}}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name={Routes.Home} component={HomeScreen}/>
         <Stack.Screen name={Routes.Restaurant} component={RestaurantScreen}/>
+        <Stack.Screen name={Routes.CartScreen}
+                      options={{presentation: 'modal'}}
+                      component={CartScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -11,12 +11,16 @@ import {
   View,
 } from 'react-native'
 import { themeColors } from '../../theme'
+import { useNavigation } from '@react-navigation/native'
+import { Routes } from '../../navigation'
 
-export default function() {
+export default function Cart() {
+  let navigator = useNavigation()
   return (
     <SafeAreaView className="absolute bottom-5 w-full z-50">
       <TouchableOpacity activeOpacity={0.6}
-                        onPress={() => Vibration.vibrate(1)}
+                        onPress={() => navigator.navigate(
+                          Routes.CartScreen)}
                         className="flex-row items-center p-2 rounded-full flex-1 px-3 mx-3 py-3 shadow-2xl"
                         style={{backgroundColor: themeColors.bgColor(1)}}>
         <View className="rounded-full w-8 h-8 items-center justify-center"
