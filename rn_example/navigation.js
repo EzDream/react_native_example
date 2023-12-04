@@ -33,7 +33,8 @@ export default function Navigation() {
         <Stack.Screen options={{presentation: 'modal'}}
                       name={Routes.OrderReadyScreen}
                       component={OrderReadyScreen}/>
-        <Stack.Screen name={Routes.DeliveryScreen} component={DeliveryScreen}/>
+        <Stack.Screen name={Routes.DeliveryScreen} component={DeliveryScreen}
+                      options={{presentation: 'modal'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

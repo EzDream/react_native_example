@@ -2,6 +2,7 @@
  * Created by zuoxiansheng on 1/12/23
  */
 import { Platform, StyleSheet } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 
 export const globalStyles = StyleSheet.create({
   container: {
@@ -23,5 +24,9 @@ export const globalStyles = StyleSheet.create({
         elevation: 5,
       },
     }),
+
+    safeArea: {
+      padding: 10,//Platform.OS === 'android' ? 20 : 0,
+    },
   },
 })
