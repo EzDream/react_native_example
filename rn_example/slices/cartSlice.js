@@ -2,7 +2,6 @@
  * Created by zuoxiansheng on 4/12/23
  */
 import { createSlice } from '@reduxjs/toolkit'
-import { stat } from '@babel/core/lib/gensync-utils/fs'
 
 const initialState = {
   items: null,
