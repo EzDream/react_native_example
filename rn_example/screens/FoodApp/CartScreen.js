@@ -1,7 +1,7 @@
 /**
  * Created by zuoxiansheng on 4/12/23
  */
-import { React, useLayoutEffect } from 'react'
+import { React, useEffect, useLayoutEffect, useState } from 'react'
 import {
   Image,
   SafeAreaView, ScrollView,
@@ -15,12 +15,33 @@ import { ArrowLeft, Minus } from 'react-native-feather'
 import { themeColors } from '../../theme'
 import { globalStyles } from '../../GlobalStyles'
 import { Routes } from '../../navigation'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectRestaurant } from '../../slices/restaurantSlice'
+import {
+  removeFromCartBy,
+  selectCartItems,
+  selectCartTotal,
+} from '../../slices/cartSlice'
 
 export default function CartScreen({navigation}) {
   const restaurant = useSelector(selectRestaurant)
-//  const restaurant = featured.restaurants[0]
+  const totalPrice = useSelector(selectCartTotal)
+  const totalItems = useSelector(selectCartItems)
+  const [groupItems, setGroupItems] = useState({})
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const items = totalItems.reduce((group, item) => {
+      if (group[item.id]) {
+        group[item.id].push(item)
+      } else {
+        group[item.id] = [item]
+      }
+      return group
+    }, {})
+    setGroupItems(items)
+  }, [totalItems])
+
   return (
     <SafeAreaView className="bg-white flex-1 py-4">
       {/*header*/}
@@ -45,7 +66,7 @@ export default function CartScreen({navigation}) {
             className="flex-row items-center justify-between px-2 mt-2">
         <Image source={require('../../assets/food_app/images/bikeGuy.png')}
                className="w-16 h-16 rounded-full"/>
-        <Text className="font-bold">Deliver in 20~20~30
+        <Text className="font-bold">Deliver in 20~30
           minutes</Text>
         <TouchableOpacity>
           <Text className="font-bold"
@@ -55,14 +76,15 @@ export default function CartScreen({navigation}) {
       {/*Order List*/}
       <ScrollView>
         {
-          restaurant.dishes.map((dish, index) => {
+          Object.entries(groupItems).map(([key, dishes]) => {
+            let dish = dishes[0]
             return (
               <View
-                key={index}
+                key={key}
                 className="flex-row m-2 bg-white p-3 rounded-xl items-center"
                 style={globalStyles.shadow}>
                 <Text className="font-bold mr-2"
-                      style={{color: themeColors.text}}>2 x</Text>
+                      style={{color: themeColors.text}}>{dishes.length} x</Text>
                 <Image source={dish.image}
                        className="w-14 h-14 rounded-full"/>
                 <View className="flex-row flex-1 items-center">
@@ -70,6 +92,10 @@ export default function CartScreen({navigation}) {
                     className="flex-1 ml-1 font-bold text-l">{dish.name}</Text>
                   <Text className="font-bold mr-2">$10</Text>
                   <TouchableOpacity className="rounded-full p-0.5"
+                                    onPress={() => {
+                                      dispatch(
+                                        removeFromCartBy({id: dish.id}))
+                                    }}
                                     style={{
                                       backgroundColor: themeColors.bgColor(1),
                                     }}>
@@ -96,7 +122,7 @@ export default function CartScreen({navigation}) {
         </View>
         <View className="flex-row justify-between">
           <Text className="text-gray-700 font-bold">Subtotal</Text>
-          <Text className="text-gray-700 font-bold">$20</Text>
+          <Text className="text-gray-700 font-bold">${totalPrice}</Text>
         </View>
         <TouchableOpacity className="py-3 rounded-full"
                           onPress={() => {
