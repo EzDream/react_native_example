@@ -4,7 +4,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  items: null,
+  items: [],
 }
 
 export const cartSlice = createSlice({
@@ -12,13 +12,14 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.items = [...state, action.payload]
+      console.log('addToCart')
+      state.items = [...state.items, action.payload]
     },
     clearCart: (state, action) => {
       state.items = []
     },
-    removeFromCart: (state, action) => {
-      let newCart = [...state, action.payload]
+    removeFromCartBy: (state, action) => {
+      let newCart = [...state.items]
       let index = newCart.findIndex(item => item.id === action.payload.id)
       if (index >= 0) {
         newCart.splice(index, 1)
@@ -30,7 +31,12 @@ export const cartSlice = createSlice({
   },
 })
 
-export const {clearCart, addToCart, removeFromCart} = cartSlice.actions
+export const {
+  clearCart,
+  addToCart,
+  removeFromCartBy,
+  setRestaurant,
+} = cartSlice.actions
 
 export const selectCartItems = state => state.cart.items
 

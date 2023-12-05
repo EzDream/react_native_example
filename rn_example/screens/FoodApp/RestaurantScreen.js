@@ -25,15 +25,14 @@ export default function RestaurantScreen({navigation}) {
     })
   }, [navigation])
 
-//  const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const {params} = useRoute()
   const item = params
-//  useEffect(() => {
-//    console.log(`useEffect item`)
-//    if (item && item.id) {
-////      dispatch(setRestaurant({...params}))
-//    }
-//  }, [])
+  useEffect(() => {
+    if (item && item.id) {
+      dispatch(setRestaurant({...item}))
+    }
+  }, [])
 
   return (
     <View className="flex-1">
@@ -87,11 +86,13 @@ export default function RestaurantScreen({navigation}) {
           <Text className="text-3xl font-bold mb-1">
             Menu
           </Text>
-          {
-            params.dishes.map((dish, index) => {
-              return <DishRow item={dish} key={index}/>
-            })
-          }
+          <ScrollView>
+            {
+              params.dishes.map((dish, index) => {
+                return <DishRow item={dish} key={index}/>
+              })
+            }
+          </ScrollView>
         </View>
       </ScrollView>
     </View>

@@ -13,8 +13,8 @@ import { store } from './store'
 
 export default function App() {
   return (
-//    <Provider store={store}>
-    <Navigation/>
-//    </Provider>
+    <Provider store={store}>
+      <Navigation/>
+    </Provider>
   )
 }

@@ -17,10 +17,13 @@ import { globalStyles } from '../../GlobalStyles'
 import { StatusBar } from 'expo-status-bar'
 import { themeColors } from '../../theme'
 import { Phone, X } from 'react-native-feather'
+import { useSelector } from 'react-redux'
+import { selectRestaurant } from '../../slices/restaurantSlice'
 
 export default function DeliveryScreen() {
   let navigation = useNavigation()
-  let restaurant = featured.restaurants[0]
+  let restaurant = useSelector(selectRestaurant)
+//  let restaurant = featured.restaurants[0]
   return (
     <View className="flex-1">
       <MapView

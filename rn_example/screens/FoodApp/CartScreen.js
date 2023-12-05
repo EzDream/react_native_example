@@ -15,9 +15,12 @@ import { ArrowLeft, Minus } from 'react-native-feather'
 import { themeColors } from '../../theme'
 import { globalStyles } from '../../GlobalStyles'
 import { Routes } from '../../navigation'
+import { useSelector } from 'react-redux'
+import { selectRestaurant } from '../../slices/restaurantSlice'
 
 export default function CartScreen({navigation}) {
-  const restaurant = featured.restaurants[0]
+  const restaurant = useSelector(selectRestaurant)
+//  const restaurant = featured.restaurants[0]
   return (
     <SafeAreaView className="bg-white flex-1 py-4">
       {/*header*/}

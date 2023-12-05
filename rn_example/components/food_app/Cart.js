@@ -13,9 +13,15 @@ import {
 import { themeColors } from '../../theme'
 import { useNavigation } from '@react-navigation/native'
 import { Routes } from '../../navigation'
+import { useSelector } from 'react-redux'
+import { selectCartItems } from '../../slices/cartSlice'
 
 export default function Cart() {
   let navigator = useNavigation()
+  const cartItems = useSelector(selectCartItems)
+  if (!cartItems || !cartItems.length) {
+    return
+  }
   return (
     <SafeAreaView className="absolute bottom-5 w-full z-50">
       <TouchableOpacity activeOpacity={0.6}
