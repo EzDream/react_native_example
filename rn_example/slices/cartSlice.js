@@ -35,7 +35,6 @@ export const {
   clearCart,
   addToCart,
   removeFromCartBy,
-  setRestaurant,
 } = cartSlice.actions
 
 export const selectCartItems = state => state.cart.items

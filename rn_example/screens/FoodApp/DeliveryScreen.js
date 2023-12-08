@@ -17,13 +17,21 @@ import { globalStyles } from '../../GlobalStyles'
 import { StatusBar } from 'expo-status-bar'
 import { themeColors } from '../../theme'
 import { Phone, X } from 'react-native-feather'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectRestaurant } from '../../slices/restaurantSlice'
+import { Routes } from '../../navigation'
+import { clearCart } from '../../slices/cartSlice'
 
 export default function DeliveryScreen() {
   let navigation = useNavigation()
   let restaurant = useSelector(selectRestaurant)
 //  let restaurant = featured.restaurants[0]
+  let dispatch = useDispatch()
+
+  const cancelOrder = () => {
+    navigation.navigate(Routes.Home)
+    dispatch(clearCart())
+  }
   return (
     <View className="flex-1">
       <MapView
@@ -79,9 +87,7 @@ export default function DeliveryScreen() {
                      fill={themeColors.bgColor(1)}/>
             </TouchableOpacity>
             <TouchableOpacity className="bg-white p-2 rounded-full"
-                              onPress={() => {
-                                navigation.goBack()
-                              }}>
+                              onPress={cancelOrder}>
               <X width={20} height={20}
                  strokeWidth={5}
                  stroke={'red'}

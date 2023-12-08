@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Routes } from '../../navigation'
 import { useSelector } from 'react-redux'
 import { selectCartItems } from '../../slices/cartSlice'
+import { featured } from '../../constant'
 
 export default function Cart() {
   let navigator = useNavigation()

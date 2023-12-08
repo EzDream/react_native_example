@@ -27,6 +27,7 @@ export default function CartScreen({navigation}) {
   const restaurant = useSelector(selectRestaurant)
   const totalPrice = useSelector(selectCartTotal)
   const totalItems = useSelector(selectCartItems)
+  const deliveryFee = 2
   const [groupItems, setGroupItems] = useState({})
   const dispatch = useDispatch()
 
@@ -94,7 +95,8 @@ export default function CartScreen({navigation}) {
                   <TouchableOpacity className="rounded-full p-0.5"
                                     onPress={() => {
                                       dispatch(
-                                        removeFromCartBy({id: dish.id}))
+                                        removeFromCartBy({id: dish.id}),
+                                      )
                                     }}
                                     style={{
                                       backgroundColor: themeColors.bgColor(1),
@@ -114,15 +116,16 @@ export default function CartScreen({navigation}) {
         style={{backgroundColor: themeColors.bgColor(0.2)}}>
         <View className="flex-row justify-between">
           <Text className="text-gray-700">Subtotal</Text>
-          <Text className="text-gray-700">$20</Text>
+          <Text className="text-gray-700">${totalPrice}</Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-gray-700">Subtotal</Text>
-          <Text className="text-gray-700">$20</Text>
+          <Text className="text-gray-700">Delivery Fee</Text>
+          <Text className="text-gray-700">${deliveryFee}</Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-gray-700 font-bold">Subtotal</Text>
-          <Text className="text-gray-700 font-bold">${totalPrice}</Text>
+          <Text className="text-gray-700 font-bold">Order Total</Text>
+          <Text className="text-gray-700 font-bold">${totalPrice +
+            deliveryFee}</Text>
         </View>
         <TouchableOpacity className="py-3 rounded-full"
                           onPress={() => {
