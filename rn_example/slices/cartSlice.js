@@ -1,7 +1,7 @@
 /**
  * Created by zuoxiansheng on 4/12/23
  */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   items: [],
@@ -39,8 +39,13 @@ export const {
 
 export const selectCartItems = state => state.cart.items
 
-export const selectCartItemsById = (state, id) => state.cart.items.filter(
-  item => item.id === id)
+//export const selectCartItemsById = (state, id) => state.cart.items.filter(
+//  item => item.id === id)
+
+export const selectCartItemsById = createSelector(
+  [(state, id) => state.cart.items, (state, id) => id],
+  (items, id) => items.filter(item => item.id === id),
+)
 
 export const selectCartTotal = state => state.cart.items.reduce(
   (total, item) => total + item.price, 0)

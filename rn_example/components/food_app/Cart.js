@@ -14,12 +14,13 @@ import { themeColors } from '../../theme'
 import { useNavigation } from '@react-navigation/native'
 import { Routes } from '../../navigation'
 import { useSelector } from 'react-redux'
-import { selectCartItems } from '../../slices/cartSlice'
+import { selectCartItems, selectCartTotal } from '../../slices/cartSlice'
 import { featured } from '../../constant'
 
 export default function Cart() {
   let navigator = useNavigation()
   const cartItems = useSelector(selectCartItems)
+  const totalPrice = useSelector(selectCartTotal)
   if (!cartItems || !cartItems.length) {
     return
   }
@@ -32,12 +33,13 @@ export default function Cart() {
                         style={{backgroundColor: themeColors.bgColor(1)}}>
         <View className="rounded-full w-8 h-8 items-center justify-center"
               style={{backgroundColor: 'rgba(255,255,255,0.3)'}}>
-          <Text className="text-white font-bold text-lg">3</Text>
+          <Text
+            className="text-white font-bold text-lg">{cartItems.length}</Text>
         </View>
         <Text className="text-white flex-1 text-center font-extrabold text-lg">View
           Cart</Text>
         <TouchableNativeFeedback>
-          <Text className="text-white text-lg font-bold">$23</Text>
+          <Text className="text-white text-lg font-bold">${totalPrice}</Text>
         </TouchableNativeFeedback>
       </TouchableOpacity>
     </SafeAreaView>

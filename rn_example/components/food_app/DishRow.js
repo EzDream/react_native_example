@@ -15,7 +15,8 @@ export default function DishRow({item}) {
   let dispatch = useDispatch()
 
   const totalItems = useSelector(
-    state => selectCartItemsById(state, item.id))
+    state => selectCartItemsById(state, item.id),
+  )
 
   const increaseItem = () => {
     dispatch(addToCart({...item}))
